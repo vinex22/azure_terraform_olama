@@ -1,0 +1,113 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+packages:
+  - curl
+  - wget
+  - git
+  - htop
+  - unzip
+
+write_files:
+  - path: /home/azureuser/install-ollama.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      echo "Starting Ollama installation..."
+      
+      # Install Ollama
+      curl -fsSL https://ollama.com/install.sh | sh
+      
+      # Start Ollama service
+      sudo systemctl enable ollama
+      sudo systemctl start ollama
+      
+      # Wait for Ollama to be ready
+      echo "Waiting for Ollama to start..."
+      sleep 30
+      
+      # Pull the model as azureuser
+      echo "Pulling model: llama3.2:3b"
+      sudo -u azureuser HOME=/home/azureuser /usr/local/bin/ollama pull llama3.2:3b
+      
+      echo "Ollama installation complete!"
+      
+  - path: /home/azureuser/start-ollama-api.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      echo "Starting Ollama API server..."
+      
+      # Set environment variable to bind to all interfaces
+      export OLLAMA_HOST=0.0.0.0:11434
+      
+      # Start Ollama serve
+      /usr/local/bin/ollama serve
+      
+  - path: /home/azureuser/test-ollama.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      echo "Testing Ollama API..."
+      
+      # Test if Ollama is running
+      curl -s http://localhost:11434/api/version
+      
+      echo ""
+      echo "Available models:"
+      curl -s http://localhost:11434/api/tags
+      
+      echo ""
+      echo "To interact with the model, use:"
+      echo "curl -X POST http://localhost:11434/api/generate -d '{\"model\": \"llama3.2:3b\", \"prompt\": \"Hello, how are you?\"}'"
+      
+  - path: /etc/systemd/system/ollama-api.service
+    permissions: '0644'
+    content: |
+      [Unit]
+      Description=Ollama API Server
+      After=network.target ollama.service
+      Requires=ollama.service
+      
+      [Service]
+      Type=simple
+      User=azureuser
+      WorkingDirectory=/home/azureuser
+      Environment=OLLAMA_HOST=0.0.0.0:11434
+      ExecStart=/usr/local/bin/ollama serve
+      Restart=always
+      RestartSec=10
+      
+      [Install]
+      WantedBy=multi-user.target
+
+runcmd:
+  - chown azureuser:azureuser /home/azureuser/*.sh
+  - chmod +x /home/azureuser/*.sh
+  - /home/azureuser/install-ollama.sh
+  - systemctl stop ollama
+  - systemctl disable ollama
+  - mkdir -p /etc/systemd/system/ollama.service.d
+  - echo '[Service]' > /etc/systemd/system/ollama.service.d/override.conf
+  - echo 'Environment=OLLAMA_HOST=0.0.0.0:11434' >> /etc/systemd/system/ollama.service.d/override.conf
+  - systemctl daemon-reload
+  - systemctl enable ollama
+  - systemctl start ollama
+  - echo "Cloud-init setup complete" > /home/azureuser/setup-complete.txt
+  - chown azureuser:azureuser /home/azureuser/setup-complete.txt
+
+final_message: |
+  Ollama VM setup is complete!
+  
+  The system has been configured with:
+  - Ollama installed and running
+  - Model llama3.2:3b pre-downloaded
+  - API exposed on port 11434
+  
+  You can now:
+  1. SSH to the VM: ssh azureuser@<public_ip>
+  2. Test the API: curl http://<public_ip>:11434/api/version
+  3. Use the model: curl -X POST http://<public_ip>:11434/api/generate -d '{"model": "llama3.2:3b", "prompt": "Hello!"}'
+  
+  Log files are available at /var/log/cloud-init-output.log

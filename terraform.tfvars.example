@@ -1,0 +1,10 @@
+# Example Terraform variables file
+# Copy this file to terraform.tfvars and fill in your values
+
+# SSH key pair will be automatically generated and saved to ssh_keys/ directory
+
+# Optional: Override default values
+environment = "dev"
+location = "East US"
+vm_size = "Standard_D4s_v3"
+ollama_model = "llama3.2:3b"
