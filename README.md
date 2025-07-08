@@ -10,7 +10,8 @@ This project sets up a Linux virtual machine on Azure with [Ollama](https://olla
 
 ## Repository
 
-📁 **GitHub**: [https://github.com/vinex22/azure_terraform_olama](https://github.com/vinex22/azure_terraform_olama)
+📁 **GitHub**: [https://github.com/vinex22/azure_terraform_olama](https://github.com/vinex22/azure_terraform_olama)  
+👤 **Author**: [Vinay Jain](https://github.com/vinex22)
 
 ## What This Deploys
 
@@ -457,6 +458,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
+- **Author**: [Vinay Jain](https://github.com/vinex22) - Creator and maintainer of this project
 - [Ollama](https://ollama.com/) for the excellent LLM deployment platform
 - [HashiCorp Terraform](https://terraform.io/) for infrastructure as code
 - [Azure](https://azure.microsoft.com/) for cloud infrastructure

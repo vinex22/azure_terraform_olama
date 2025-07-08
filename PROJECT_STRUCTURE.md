@@ -1,5 +1,8 @@
 # Azure Terraform Ollama - Repository Structure
 
+**Author**: [Vinay Jain](https://github.com/vinex22)  
+**Repository**: [https://github.com/vinex22/azure_terraform_olama](https://github.com/vinex22/azure_terraform_olama)
+
 ## Files to Commit to Git
 
 ### Core Terraform Files

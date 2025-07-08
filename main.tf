@@ -1,3 +1,10 @@
+# Azure Terraform Ollama Deployment
+# Author: Vinay Jain (https://github.com/vinex22)
+# Repository: https://github.com/vinex22/azure_terraform_olama
+# 
+# This configuration deploys a Linux VM on Azure with Ollama pre-installed
+# and configured to run the llama3.2:3b model automatically.
+
 # Configure the Azure Provider
 terraform {
   required_providers {

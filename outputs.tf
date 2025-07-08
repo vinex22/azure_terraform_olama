@@ -1,3 +1,7 @@
+# Azure Terraform Ollama - Output Definitions
+# Author: Vinay Jain (https://github.com/vinex22)
+# Repository: https://github.com/vinex22/azure_terraform_olama
+
 output "resource_group_name" {
   description = "Name of the resource group"
   value       = azurerm_resource_group.ollama_rg.name

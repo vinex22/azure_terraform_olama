@@ -1,5 +1,8 @@
 # Ollama Azure VM - Troubleshooting Guide
 
+**Author**: [Vinay Jain](https://github.com/vinex22)  
+**Repository**: [https://github.com/vinex22/azure_terraform_olama](https://github.com/vinex22/azure_terraform_olama)
+
 ## Status: ✅ **RESOLVED** - Full automation working!
 
 This project now deploys a fully automated Ollama VM on Azure using Terraform. The deployment takes approximately 3-4 minutes and requires no manual intervention.

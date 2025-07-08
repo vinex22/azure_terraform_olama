@@ -1,4 +1,8 @@
 #cloud-config
+# Azure VM Cloud-init Configuration for Ollama
+# Author: Vinay Jain (https://github.com/vinex22)
+# Repository: https://github.com/vinex22/azure_terraform_olama
+
 package_update: true
 package_upgrade: true
 

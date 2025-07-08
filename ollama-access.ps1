@@ -1,4 +1,6 @@
 # Ollama VM Access Script for Windows PowerShell
+# Author: Vinay Jain (https://github.com/vinex22)
+# Repository: https://github.com/vinex22/azure_terraform_olama
 # This script provides easy access to your Ollama VM through SSH tunnel
 
 param(

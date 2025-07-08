@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Test script for Ollama VM deployment
+# Author: Vinay Jain (https://github.com/vinex22)
+# Repository: https://github.com/vinex22/azure_terraform_olama
 # This script tests the deployment from outside the VM
 
 echo "Testing Ollama VM deployment..."
