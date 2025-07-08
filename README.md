@@ -371,6 +371,39 @@ environment = "ai-playground" # 🎮 For fun!
 - [ ] 🚨 Configure alerting
 - [ ] 🛡️ Enable just-in-time access
 
+### 🔍 Security Testing (No Deployment Required!) 🔍
+
+<div align="center">
+
+🛡️ **Test security WITHOUT running the code!** 🛡️
+
+</div>
+
+Test your infrastructure security before deployment:
+
+```bash
+# 🚀 Quick security check (5 seconds)
+./quick-security-check.sh
+
+# 🔬 Advanced security analysis
+python3 security-analysis.py
+
+# 🛡️ Comprehensive security testing
+./security-test.sh
+
+# 📋 Using Makefile (recommended)
+make security-quick      # Fast check
+make security-all        # Complete testing
+```
+
+**What gets tested:**
+- ✅ **Terraform Security**: Network rules, SSH config, encryption
+- ✅ **Script Security**: Shell script vulnerabilities, dangerous patterns
+- ✅ **Configuration Security**: YAML validation, hardcoded secrets
+- ✅ **Best Practices**: File permissions, access controls
+
+📖 **Detailed guide:** See [SECURITY_TESTING.md](SECURITY_TESTING.md) for complete documentation
+
 ---
 
 ## 🚨 Troubleshooting Corner 🚨
