@@ -17,14 +17,20 @@
 ### Scripts
 - `test-deployment.sh` - Bash script for testing deployment
 - `ollama-access.ps1` - PowerShell script for convenient access
+- `security-test.sh` - Comprehensive security testing suite
+- `quick-security-check.sh` - Fast security validation script
+- `security-demo.sh` - Interactive security testing demo
+- `security-analysis.py` - Advanced Python security analysis
 
 ### Documentation
 - `README.md` - Main documentation
 - `TROUBLESHOOTING.md` - Troubleshooting guide
+- `SECURITY_TESTING.md` - Complete security testing guide
 - `PROJECT_STRUCTURE.md` - This file
 
 ### Configuration Files
 - `.gitignore` - Git ignore patterns
+- `Makefile` - Security testing automation
 
 ## Files NOT to Commit (Excluded by .gitignore)
 
@@ -66,10 +72,20 @@ git push -u origin main
 1. **Fully Automated**: No manual steps required after `terraform apply`
 2. **Robust**: Handles cloud-init failures and service configurations
 3. **Secure**: SSH key authentication, network security groups
-4. **Well-Documented**: Comprehensive README and troubleshooting guide
-5. **Tested**: Validated deployment process
-6. **Flexible**: Configurable VM size, location, and model
-7. **Production-Ready**: Proper error handling and logging
+4. **Security Testing**: Comprehensive security validation without deployment
+5. **Well-Documented**: Comprehensive README and troubleshooting guide
+6. **Tested**: Validated deployment process
+7. **Flexible**: Configurable VM size, location, and model
+8. **Production-Ready**: Proper error handling and logging
+
+## Security Testing Features
+
+- **Static Analysis**: Test security without deploying infrastructure
+- **Multiple Tools**: tfsec, Checkov, ShellCheck, custom Python analysis
+- **Fast Validation**: Quick 5-second security checks for development
+- **Comprehensive Testing**: Full security suite with detailed reporting
+- **CI/CD Integration**: Automated security testing in GitHub Actions
+- **Best Practices**: Network security, SSH configuration, encryption validation
 
 ## Usage
 
